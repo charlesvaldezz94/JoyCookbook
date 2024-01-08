@@ -46,11 +46,8 @@ const Home = () => {
     return displayName.charAt(0).toUpperCase() + displayName.slice(1);
   };
 
-
   return (
     <div id="homeContainer">
-
-
       <div className="homeTopContainer">
         <div className="homeTitle">
           <h2> Top 3 Recipes of the Week </h2>
@@ -75,16 +72,23 @@ const Home = () => {
         </div>
       </div>
 
-
       <div className="homeMiddleContainer">
         <div className="homeMiddleContainerTitle">
           <h2> Create your own recipes here! </h2>
-          <Link to="/create-recipe">
-            <img src="https://d3awvtnmmsvyot.cloudfront.net/api/file/6QGh7bTRTeciGupN92MQ/convert?fit=max&w=1450&quality=60&cache=true&rotate=exif&compress=true" />
-          </Link>
+          {isAuthenticated ? (
+            <Link to="/create-recipe">
+              <img src="https://d3awvtnmmsvyot.cloudfront.net/api/file/6QGh7bTRTeciGupN92MQ/convert?fit=max&w=1450&quality=60&cache=true&rotate=exif&compress=true" />
+            </Link>
+          ) : (
+            <Link to="/login">
+              <img
+                src="https://d3awvtnmmsvyot.cloudfront.net/api/file/6QGh7bTRTeciGupN92MQ/convert?fit=max&w=1450&quality=60&cache=true&rotate=exif&compress=true"
+                alt="login"
+              />
+            </Link>
+          )}
         </div>
       </div>
-
 
       <div className="homeBottomContainer">
         <div className="homeBottomTitle">
@@ -105,8 +109,6 @@ const Home = () => {
             </Link>
           )}
         </div>
-
-
       </div>
     </div>
   );

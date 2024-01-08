@@ -23,9 +23,13 @@ const Navbar = () => {
         </div>
         <div className="navbarRecipeLinks">
           <Link to="/all-recipes"> All Recipes </Link>
-          <Link to="/create-recipe"> Create-a-Recipe</Link>
+          {!auth.currentUser ? (
+            <Link to="/login"> Create-a-Recipe</Link>
+          ) : (
+            <Link to="/create-recipe"> Create-a-Recipe</Link>
+          )}
+
           <span className="myRecipeLink">
-            {" "}
             {!auth.currentUser ? (
               <></>
             ) : (
