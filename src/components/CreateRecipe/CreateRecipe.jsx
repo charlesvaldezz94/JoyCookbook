@@ -98,11 +98,18 @@ const CreateRecipe = () => {
   };
 
   const handleCreateRecipe = async () => {
+    // Check if the user is logged in
+    if (!authUser) {
+      // User is not logged in, show an error message
+      alert("You need to log in to create a recipe.");
+      return;
+    }
+  
     if (validateForm()) {
       try {
-        const author = authUser.email;
+        const author = authUser.email || "Unknown"; // Use a default value if email is null
         const dateCreated = serverTimestamp();
-
+  
         const newRecipeRef = await addDoc(collection(db, "recipes"), {
           title,
           author,
@@ -116,11 +123,10 @@ const CreateRecipe = () => {
           cookingTime,
           category,
         });
-
+  
         console.log("Recipe created with ID:", newRecipeRef.id);
-
+  
         navigate(`/recipe/${newRecipeRef.id}`);
-
       } catch (error) {
         console.error("Error creating recipe", error);
       }
@@ -262,6 +268,7 @@ const CreateRecipe = () => {
               value={cookingTime}
               onChange={(e) => setCookingTime(e.target.value)}
             />
+            <span> E.G: 10 min </span>
             {errors.cookingTime && (
               <p className="error">{errors.cookingTime}</p>
             )}
@@ -277,6 +284,7 @@ const CreateRecipe = () => {
                 Select a category
               </option>
               <option value="Italian">Italian</option>
+              <option value="Italian">Filipino</option>
               <option value="French">French</option>
               <option value="Mexican">Mexican</option>
               <option value="Chinese">Chinese</option>

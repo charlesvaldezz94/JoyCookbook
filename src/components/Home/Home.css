@@ -1,0 +1,38 @@
+.topRecipesCards ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.topRecipesCards {
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#likes {
+    width: 20px;
+    height: 20px;
+}
+
+.homeTopContainer {
+    margin-top: 5vh;
+}
+
+.homeTitle  {
+    text-align: center;
+}
+
+.topRecipesCard {
+    text-decoration: none;
+}
+
+.topRecipesCards ul {
+    list-style-type: none;
+}
+
+.topRecipesCard img {
+    width: 10vw;
+    height: 10vw;
+}

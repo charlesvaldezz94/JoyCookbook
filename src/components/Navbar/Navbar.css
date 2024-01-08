@@ -1,0 +1,25 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
+    margin-left: 5vw;
+    font-size: 20px;
+}
+
+nav a:hover {
+    filter: brightness(1.75);
+}
+
+.navbarHomeLink a {
+    color: green;
+}
+
+.navbarRecipeLinks a {
+    margin-right: 5vw;
+    color: red;
+}
+
+.navbarLoginLinks a {
+    margin-right: 5vw;
+    color: green;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import { Link } from "react-router-dom";
+import './AllRecipes.css';
 
 const AllRecipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -50,8 +51,8 @@ const AllRecipes = () => {
               <Link to={`/recipe/${recipe.id}`} className="allRecipesCard">
                 <h3>{recipe.title}</h3>
                 <p> {getDisplayName(recipe)} </p>
-                <p>{recipe.ingredients.join(", ")}</p>
-                <p>{recipe.instructions}</p>
+                <img src={recipe.imageURL} alt="Recipe" />
+                <p> {recipe.likes} <img  id="likes" src="/images/filledHeart.png" /> </p>
               </Link>
             </li>
           ))}

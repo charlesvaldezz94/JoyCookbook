@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth, signOut } from "../../firebase/firebase";
+import "./Navbar.css";
 
 const Navbar = () => {
   const auth = useAuth();
@@ -23,16 +24,23 @@ const Navbar = () => {
         <div className="navbarRecipeLinks">
           <Link to="/all-recipes"> All Recipes </Link>
           <Link to="/create-recipe"> Create-a-Recipe</Link>
-          <Link to="/my-recipes"> My Recipes</Link>
+          <span className="myRecipeLink">
+            {" "}
+            {!auth.currentUser ? (
+              <></>
+            ) : (
+              <Link to="/my-recipes"> My Recipes</Link>
+            )}
+          </span>
         </div>
         <div className="navbarLoginLinks">
           {!auth.currentUser ? (
-            <div>
+            <div className="navbarAuth">
               <Link to="/login">Login</Link>
               <Link to="/register">Register</Link>
             </div>
           ) : (
-            <div>
+            <div className="navbarWelcome">
               <span>Welcome, {getDisplayName()}!</span>
               <button onClick={() => signOut(auth)}>Sign Out</button>
             </div>
