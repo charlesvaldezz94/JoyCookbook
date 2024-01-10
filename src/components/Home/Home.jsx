@@ -50,7 +50,15 @@ const Home = () => {
     <div id="homeContainer">
       <div className="homeTopContainer">
         <div className="homeTitle">
-          <h2> Top 3 Recipes of the Week </h2>
+          <span>
+          <img src="/images/medal.png" id="top3img"/>
+          <img src="/images/medal.png" id="top3img"/>
+          <img src="/images/medal.png" id="top3img"/>
+          <p> Top 3 Recipes of the Week </p>
+          <img src="/images/medal.png" id="top3img"/>
+          <img src="/images/medal.png" id="top3img"/>
+          <img src="/images/medal.png" id="top3img"/>
+          </span>
         </div>
         <div className="topRecipesCards">
           <ul>
@@ -59,12 +67,12 @@ const Home = () => {
                 {/* Use Link to navigate to RecipeDetails */}
                 <Link to={`/recipe/${recipe.id}`} className="topRecipesCard">
                   <h3>{recipe.title}</h3>
-                  <p> {getDisplayName(recipe)} </p>
-                  <img src={recipe.imageURL} alt="Recipe" />
-                  <p>
-                    {recipe.likes}
+                  <img src={recipe.imageURL} alt="Recipe" id="recipeImg" />
+                  <div className="cardAuthor">{getDisplayName(recipe)} </div>
+                  <span>
                     <img id="likes" src="/images/filledHeart.png" />
-                  </p>
+                    {recipe.likes}
+                  </span>
                 </Link>
               </li>
             ))}
@@ -77,14 +85,11 @@ const Home = () => {
           <h2> Create your own recipes here! </h2>
           {isAuthenticated ? (
             <Link to="/create-recipe">
-              <img src="https://d3awvtnmmsvyot.cloudfront.net/api/file/6QGh7bTRTeciGupN92MQ/convert?fit=max&w=1450&quality=60&cache=true&rotate=exif&compress=true" />
+              <button className="btn"> Here </button>
             </Link>
           ) : (
             <Link to="/login">
-              <img
-                src="https://d3awvtnmmsvyot.cloudfront.net/api/file/6QGh7bTRTeciGupN92MQ/convert?fit=max&w=1450&quality=60&cache=true&rotate=exif&compress=true"
-                alt="login"
-              />
+              <button className="btn"> Here </button>
             </Link>
           )}
         </div>
@@ -92,20 +97,16 @@ const Home = () => {
 
       <div className="homeBottomContainer">
         <div className="homeBottomTitle">
-          <h2> Check out your recipes here!</h2>
+          <h2> Check out your recipes here!</h2>{" "}
+        </div>
+        <div className="homeBottomLink">
           {isAuthenticated ? (
             <Link to="/my-recipes">
-              <img
-                src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe_writing_700-94d33d1.jpg?quality=90&resize=556,505"
-                alt="Check out your recipes"
-              />
+              <button className="btn"> Here </button>
             </Link>
           ) : (
             <Link to="/login">
-              <img
-                src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe_writing_700-94d33d1.jpg?quality=90&resize=556,505"
-                alt="Check out your recipes"
-              />
+              <button className="btn"> Here </button>
             </Link>
           )}
         </div>

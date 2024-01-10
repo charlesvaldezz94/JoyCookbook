@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
+import './RecipeDetails.css';
 
 const RecipeDetails = () => {
   const { id } = useParams();
@@ -80,7 +81,7 @@ const RecipeDetails = () => {
   }
 
   return (
-    <div>
+    <div className="RecipeDetailsContainer">
       <h2>{recipeDetails.title}</h2>
       <p>Ingredients: {recipeDetails.ingredients.join(", ")}</p>
       <p>Instructions: {recipeDetails.instructions}</p>

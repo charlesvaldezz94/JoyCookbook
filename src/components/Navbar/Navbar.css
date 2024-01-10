@@ -1,25 +1,45 @@
 nav {
     display: flex;
     justify-content: space-between;
-    width: 90vw;
-    margin-left: 5vw;
+    align-items: center;
+    margin-left: -0.5vw;
+    height: 10vh;
+    width: 100vw;
     font-size: 20px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+    url(https://foodindustryexecutive.com/wp-content/uploads/2022/06/bigstock-Food-Background-Food-Concept-W-445520756.jpg);
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  margin-top: -1.5vh;
+  padding: 0;
+}
+
+nav a {
+    padding: 1vw;
 }
 
 nav a:hover {
-    filter: brightness(1.75);
+    cursor: pointer; 
+    border: white solid 1px;
+    overflow: hidden;
 }
 
 .navbarHomeLink a {
-    color: green;
+    color: white;
+    font-size: 42px;
+    margin-left: 3vw;
 }
 
 .navbarRecipeLinks a {
     margin-right: 5vw;
-    color: red;
+    font-size: 24px;
+    color: white;
 }
 
 .navbarLoginLinks a {
     margin-right: 5vw;
-    color: green;
+    font-size: 24px;
+    color: white;
 }

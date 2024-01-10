@@ -1,38 +1,158 @@
+.homeTopContainer {
+  margin-bottom: 10vh;
+}
+
 .topRecipesCards ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin-left: -3vw;
 }
 
 .topRecipesCards {
-    width: 80vw;
-    margin-left: auto;
-    margin-right: auto;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #likes {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
-.homeTopContainer {
-    margin-top: 5vh;
+.homeTitle img {
+  width: 50px;
+  height: 50px;
 }
 
-.homeTitle  {
-    text-align: center;
+.homeTitle span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+
+.homeTitle {
+  text-align: center;
+  font-size: 42px;
+  color: rgb(77, 27, 27);
+  border-bottom: solid 2px rgb(77, 27, 27);
+  border-top: solid 2px rgb(77, 27, 27);
+  width: 100vw;
+  margin-left: -0.5vw;
+  background-color: rgb(246, 245, 243);
+}
+
+.homeTitle p {
+  margin-left: 2vw;
+  margin-right: 2vw;
+  font-weight: bold;
 }
 
 .topRecipesCard {
-    text-decoration: none;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(77, 27, 27);
 }
 
-.topRecipesCards ul {
-    list-style-type: none;
+.topRecipesCard h3 {
+  font-size: 24px;
+  margin-bottom: 0.2vh;
 }
 
-.topRecipesCard img {
-    width: 10vw;
-    height: 10vw;
+.topRecipesCard #recipeImg {
+  width: 25vw;
+  height: 25vw;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.5); 
+}
+
+.topRecipesCards span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardAuthor {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.topRecipesCard #recipeImg:hover {
+    filter: brightness(105%);
+}
+
+.homeMiddleContainerTitle {
+  text-align: center;
+  color: white;
+  padding-top: 8vh;
+  font-size: 32px;
+}
+
+.homeBottomTitle {
+  text-align: center;
+  color: white;
+  padding-top: 8vh;
+  font-size: 32px;
+}
+
+.homeBottomLink img {
+  width: 95vw;
+  margin-left: 2vw;
+}
+
+.homeMiddleContainer {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+    url(https://d3awvtnmmsvyot.cloudfront.net/api/file/6QGh7bTRTeciGupN92MQ/convert?fit=max&w=1450&quality=60&cache=true&rotate=exif&compress=true);
+  background-size: 90vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 45vh;
+  margin-bottom: 10vh;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.homeBottomContainer {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+    url(https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe_writing_700-94d33d1.jpg?quality=90&resize=556,505);
+  background-size: 90vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 45vh;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20vh;
+  
+}
+
+.homeBottomLink {
+  text-align: center;
+}
+
+.btn {
+    width: 15vw;
+    height: 10vh;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.25);
+    border: solid 2px white;
+    color: white;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.5); 
+    font-size: 28px;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
 }

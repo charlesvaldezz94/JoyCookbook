@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signIn } from "../../firebase/firebase";
+import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -26,38 +27,45 @@ const Login = () => {
 
   return (
     <div className="loginContainer">
-      <div className="loginTitle">
-        <h2>Login</h2>
-      </div>
+      <div className="loginBox">
+        <div className="loginTitle">
+          <h2>Login</h2>
+        </div>
 
-      <div className="loginForm">
-        <form onSubmit={handleLogin}>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <div className="loginForm">
+          <form onSubmit={handleLogin}>
+            <div className="formContainer">
+              <label>Email:</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
 
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+            <div className="formContainer">
+              <label>Password:</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
 
-          <button type="submit">Login</button>
-        </form>
-      </div>
+            <button className="loginBtn" type="submit">
+              Login
+            </button>
+          </form>
+        </div>
 
-      <div className="loginAlt">
-        <span>
-          <p>
-            
-            If you are not yet registered,
-            <Link to="/register"> Register Here! </Link>
-          </p>
-        </span>
+        <div className="loginAlt">
+          <span>
+            <p>
+              If you are not yet registered,
+              <Link to="/register"> Register Here! </Link>
+            </p>
+          </span>
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,9 @@
 * {
-    font-family: monospace;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-decoration: none;
+}
+
+body {
+    background: linear-gradient(to bottom, #ddc9ae, #ffffff);
+    background-repeat: no-repeat;
 }

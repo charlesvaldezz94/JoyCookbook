@@ -41,7 +41,7 @@ const AllRecipes = () => {
   return (
     <div className="allRecipesContainer">
       <div className="allRecipesTitle">
-        <h2>All Recipes</h2>
+        <h2>Check out all the recipes we have to offer!</h2>
       </div>
       <div className="allRecipesCards">
         <ul>
@@ -50,9 +50,10 @@ const AllRecipes = () => {
               {/* Use Link to navigate to RecipeDetails */}
               <Link to={`/recipe/${recipe.id}`} className="allRecipesCard">
                 <h3>{recipe.title}</h3>
+                <img id="recipePic" src={recipe.imageURL} alt="Recipe" />
+                <p> {recipe.category} </p>
                 <p> {getDisplayName(recipe)} </p>
-                <img src={recipe.imageURL} alt="Recipe" />
-                <p> {recipe.likes} <img  id="likes" src="/images/filledHeart.png" /> </p>
+                <p> <img  id="likes" src="/images/filledHeart.png" /> {recipe.likes} </p>
               </Link>
             </li>
           ))}
