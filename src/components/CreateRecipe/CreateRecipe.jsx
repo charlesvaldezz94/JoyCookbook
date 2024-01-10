@@ -58,6 +58,7 @@ const CreateRecipe = () => {
     setInstructions(updatedInstructions);
   };
 
+
   const validateForm = () => {
     const errors = {};
 
@@ -284,7 +285,7 @@ const CreateRecipe = () => {
                 Select a category
               </option>
               <option value="Italian">Italian</option>
-              <option value="Italian">Filipino</option>
+              <option value="Filipino">Filipino</option>
               <option value="French">French</option>
               <option value="Mexican">Mexican</option>
               <option value="Chinese">Chinese</option>
@@ -313,6 +314,7 @@ const CreateRecipe = () => {
               <option value="Portuguese">Portuguese</option>
               <option value="German">German</option>
               <option value="Dutch">Dutch</option>
+              <option value="Fusion"> Fusion </option>
             </select>
             {errors.category && <p className="error">{errors.category}</p>}
           </div>

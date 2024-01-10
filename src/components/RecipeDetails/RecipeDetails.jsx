@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
-import './RecipeDetails.css';
+import "./RecipeDetails.css";
 
 const RecipeDetails = () => {
   const { id } = useParams();
@@ -82,26 +82,62 @@ const RecipeDetails = () => {
 
   return (
     <div className="RecipeDetailsContainer">
-      <h2>{recipeDetails.title}</h2>
-      <p>Ingredients: {recipeDetails.ingredients.join(", ")}</p>
-      <p>Instructions: {recipeDetails.instructions}</p>
-      <p>Likes: {recipeDetails.likes}</p>
-      {isLiked ? (
-        <img
-          src="/images/filledHeart.png"
-          alt="Filled Heart"
-          onClick={handleLikeClick}
-          style={{ cursor: "pointer" }}
-        />
-      ) : (
-        <img
-          src="/images/emptyHeart.png"
-          alt="Empty Heart"
-          onClick={handleLikeClick}
-          style={{ cursor: "pointer" }}
-        />
-      )}
-      {/* Add more details as needed */}
+      <div className="RecipeDetailsBox">
+        <div className="RecipeDetailsTitle">
+          <span>
+            <h2>{recipeDetails.title}</h2> ({recipeDetails.category})
+          </span>
+        </div>
+        <div className="RecipeDetailsInfoContainer">
+          <div className="RecipeDetailsInfoLeft">
+            <img src={recipeDetails.imageURL} />
+          </div>
+
+          <div className="RecipeDetailsInfoRight">
+            <p className="info">
+              <span className="infoTitle">Difficulty: </span>
+              {recipeDetails.difficultyLevel}
+            </p>
+            <p className="info">
+              <span className="infoTitle">Cooking Time:</span>
+              {recipeDetails.cookingTime}
+            </p>
+
+            <div className="infoTier2">
+              <p className="info">
+                <span className="infoTitle">Ingredients:</span>
+                {recipeDetails.ingredients.join(", ")}
+              </p>
+              <p className="info">
+                <span className="infoTitle">Instructions:</span>
+                {recipeDetails.instructions.join(", ")}
+              </p>
+            </div>
+
+            <p className="RecipeDetailsLikes">
+              {isLiked ? (
+                <img
+                  src="/images/filledHeart.png"
+                  alt="Filled Heart"
+                  onClick={handleLikeClick}
+                  style={{ cursor: "pointer" }}
+                />
+              ) : (
+                <img
+                  src="/images/emptyHeart.png"
+                  alt="Empty Heart"
+                  onClick={handleLikeClick}
+                  style={{ cursor: "pointer" }}
+                />
+              )}
+              {recipeDetails.likes}
+            </p>
+            <div className="RecipeDetailsTags">
+              <span className="infoTitle">Tags: </span> {recipeDetails.tags}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

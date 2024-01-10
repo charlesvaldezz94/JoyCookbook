@@ -45,8 +45,8 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="navbarWelcome">
-              <span>Welcome, {getDisplayName()}!</span>
-              <button onClick={() => signOut(auth)}>Sign Out</button>
+              <span className="welcomeTitle">Welcome, {getDisplayName()}!</span>
+              <button className="navbarLogoutBtn" onClick={() => signOut(auth)}>Sign Out</button>
             </div>
           )}
         </div>

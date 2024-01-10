@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db, useAuth } from "../../firebase/firebase";
+import { Link } from "react-router-dom";
+import "./MyRecipes.css";
 
 const MyRecipes = () => {
   const { currentUser: authUser } = useAuth();
@@ -47,18 +49,37 @@ const MyRecipes = () => {
   };
 
   return (
-    <div>
-      <h2>My Recipes</h2>
-      <ul>
-        {userRecipes.map((recipe) => (
-          <li key={recipe.id}>
-            {recipe.title}
-            <button onClick={() => handleDeleteRecipe(recipe.id)}>
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+    <div className="container">
+      <div className="myRecipesBox">
+        <div className="myRecipesTitle">
+          <h2>My Recipes</h2>
+        </div>
+
+        <div className="myRecipesList">
+          <ul>
+            {userRecipes.map((recipe) => (
+              <li key={recipe.id}>
+                <div className="myRecipesInfoTitle"> {recipe.title} </div>
+                <div className="myRecipesImg"> <Link to={`/recipe/${recipe.id}`}>
+                  <img src={recipe.imageURL} /></Link>
+                </div>
+
+                <div className="myRecipesInfoLikes">
+                  <img id="likes" src="/images/filledHeart.png" />
+                  {recipe.likes}
+                </div>
+
+                <div
+                  className="myRecipesDeleteBtn"
+                  onClick={() => handleDeleteRecipe(recipe.id)}
+                >
+                  <img src="/images/delete.png" alt="Delete" />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };

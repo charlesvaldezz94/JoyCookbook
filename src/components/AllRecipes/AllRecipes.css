@@ -1,6 +1,12 @@
 .allRecipesTitle {
     text-align: center;
     font-size: 32px;
+    border-bottom: solid 2px rgb(77, 27, 27);
+    color: rgb(77, 27, 27);
+    width: 70vw;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10vh;
 }
 
 
@@ -24,7 +30,10 @@
     border-radius: 10px;
     margin-right: 5vw;
     margin-bottom: 5vw;
- 
+}
+
+.allRecipesCards li:hover {
+    transform: scale(1.05);
 }
 
 .allRecipesCard {

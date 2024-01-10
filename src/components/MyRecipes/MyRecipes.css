@@ -1,0 +1,73 @@
+.myRecipesBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.myRecipesTitle {
+    text-align: center;
+    font-size: 28px;
+    border-bottom: black solid 2px;
+    width: 20vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10vh;
+}
+
+.myRecipesList ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 85vw;
+    margin-left: 12vw;
+}
+
+.myRecipesList li {
+    margin-bottom: 5vh;
+    text-align: center;
+    margin-right: 5vw;
+}
+
+.myRecipesInfoTitle {
+    margin-bottom: 2vh;
+    font-size: 24px;
+    text-transform: capitalize;
+}
+
+.myRecipesImg {
+    margin-bottom: 2vh;
+}
+
+.myRecipesImg img {
+    width: 20vw;
+    height: 20vw;
+    border-radius: 10px;
+}
+
+.myRecipesImg img:hover {
+    filter: brightness(110%);
+}
+
+.myRecipesInfoLikes {
+    margin-bottom: 2vh;
+}
+
+.myRecipesDeleteBtn img {
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+}
+
+.myRecipesDeleteBtn {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 30px;
+    border: solid 1px black;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.myRecipesDeleteBtn:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.9);
+}

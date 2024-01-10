@@ -43,3 +43,26 @@ nav a:hover {
     font-size: 24px;
     color: white;
 }
+
+.navbarWelcome {
+    color: white;
+}
+
+.welcomeTitle {
+    margin-right: 1vw;
+}
+
+.navbarLogoutBtn {
+    margin-right: 1vw;
+    background-color: rgba(0, 0, 0, 0.25);
+    border: solid white 1px;
+    color: white;
+    border-radius: 5px;
+    padding: 0.5vw;
+}
+
+.navbarLogoutBtn:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+
+}
