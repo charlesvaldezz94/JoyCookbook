@@ -1,0 +1,115 @@
+.createRecipeBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(https://i.pinimg.com/1200x/ed/37/74/ed3774cbd59c6abb24aacecbb9d9c11a.jpg);
+    background-repeat: repeat-y;
+    background-size: 100vw;
+}
+
+.createRecipeTitle {
+    font-size: 28px;
+    border-bottom: solid 2px black;
+    margin-bottom: 2vh;
+}
+
+.formTitle {
+    font-size: 24px;
+    margin-right: 1vw;
+}
+
+.createRecipeFormContainer {
+    margin-bottom: 20vw;
+    border: solid 1px black;
+    padding-left: 10vw;
+    padding-top: 5vw;
+    padding-bottom: 10vw;
+    border-radius: 10px;
+    background: linear-gradient(to bottom right, #ffffff, rgb(189, 171, 151));
+}
+
+.createRecipeFormContainer form div {
+    margin-bottom: 5vh;
+}
+
+.createRecipeFormContainer form {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.createRecipeFormContainer form input {
+    width: 20vw;
+    height: 4vh;
+    margin-top: 1vh;
+    margin-right: 1vw;
+    border: solid 2px gray;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.createRecipeFormContainer select {
+    height: 4vh;
+    font-size: 20px;
+}
+
+.formLeftSide{
+    width: 40vw;
+}
+
+.formRightSide {
+    width: 40vw;
+}
+
+.formBtn {
+    height: 4vh;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.formBtn:hover {
+    cursor: pointer;
+    background-color: green;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.createBtn {
+    width: 12vw;
+    height: 8vh;
+    font-size: 24px;
+    border: solid 2px black;
+    border-radius: 10px;
+    margin-left: 10vw;
+    margin-top: 5vh;
+}
+
+.createBtn:hover {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.instructionsForm li button , .ingredientsForm li button {
+    margin-left: 1vw;
+    margin-bottom: 1vh;
+}
+
+
+.deleteBtn img {
+    width: 20px;
+    height: 20px;
+}
+
+.deleteBtn {
+    border-radius: 5px;
+    border: solid 1px gray;
+}
+
+.deleteBtn:hover {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}

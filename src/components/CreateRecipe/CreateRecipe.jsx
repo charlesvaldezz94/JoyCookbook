@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db, useAuth } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
+import "./CreateRecipe.css";
 
 const CreateRecipe = () => {
   const { currentUser: authUser } = useAuth();
@@ -58,7 +59,6 @@ const CreateRecipe = () => {
     setInstructions(updatedInstructions);
   };
 
-
   const validateForm = () => {
     const errors = {};
 
@@ -105,12 +105,12 @@ const CreateRecipe = () => {
       alert("You need to log in to create a recipe.");
       return;
     }
-  
+
     if (validateForm()) {
       try {
         const author = authUser.email || "Unknown"; // Use a default value if email is null
         const dateCreated = serverTimestamp();
-  
+
         const newRecipeRef = await addDoc(collection(db, "recipes"), {
           title,
           author,
@@ -124,9 +124,9 @@ const CreateRecipe = () => {
           cookingTime,
           category,
         });
-  
+
         console.log("Recipe created with ID:", newRecipeRef.id);
-  
+
         navigate(`/recipe/${newRecipeRef.id}`);
       } catch (error) {
         console.error("Error creating recipe", error);
@@ -136,193 +136,228 @@ const CreateRecipe = () => {
 
   return (
     <div className="createRecipeContainer">
-      <div className="createRecipeTitle">
-        <h2>Create Recipe</h2>
-      </div>
-      <div className="createRecipeFormContainer">
-        <form>
-          <div className="titleForm">
-            <label>Title:</label>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            {errors.title && <p className="error">{errors.title}</p>}
-          </div>
+      <div className="createRecipeBox">
+        <div className="createRecipeTitle">
+          <h2>Create A Recipe</h2>
+        </div>
 
-          <div className="tagsForm">
-            <label>Tags:</label>
-            <div>
-              <input
-                type="text"
-                value={tag}
-                onChange={(e) => setTag(e.target.value)}
-              />
-              <button type="button" onClick={handleAddTag}>
-                Add Tag
-              </button>
-            </div>
-            {errors.tags && <p className="error">{errors.tags}</p>}
-            <ul>
-              {tags.map((item, index) => (
-                <li key={index}>
-                  {item}
-                  <button type="button" onClick={() => handleDeleteTag(index)}>
-                    Delete
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="createRecipeFormContainer">
+          <form>
+            <div className="formLeftSide">
+              <div className="titleForm">
+                <label className="formTitle">Title:</label>
+                <div>
+                  <input
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                </div>
+                {errors.title && <p className="error">{errors.title}</p>}
+              </div>
 
-          <div className="ingredientsForm">
-            <label>Ingredients:</label>
-            <div>
-              <input
-                type="text"
-                value={ingredient}
-                onChange={(e) => setIngredient(e.target.value)}
-              />
-              <button type="button" onClick={handleAddIngredient}>
-                Add Ingredient
-              </button>
-            </div>
-            {errors.ingredients && (
-              <p className="error">{errors.ingredients}</p>
-            )}
-            <ul>
-              {ingredients.map((item, index) => (
-                <li key={index}>
-                  {item}
+              <div className="tagsForm">
+                <label className="formTitle">Tags:</label>
+                <div>
+                  <input
+                    type="text"
+                    value={tag}
+                    onChange={(e) => setTag(e.target.value)}
+                  />
                   <button
+                    className="formBtn"
                     type="button"
-                    onClick={() => handleDeleteIngredient(index)}
+                    onClick={handleAddTag}
                   >
-                    Delete
+                    Add Tag
                   </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+                </div>
+                {errors.tags && <p className="error">{errors.tags}</p>}
+                <ul>
+                  {tags.map((item, index) => (
+                    <li key={index}>
+                      {item}
+                      <button
+                        className="deleteBtn"
+                        type="button"
+                        onClick={() => handleDeleteTag(index)}
+                      >
+                        <img src="images/delete.png" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
 
-          <div className="instructionsForm">
-            <label>Instructions:</label>
-            <div>
-              <input
-                type="text"
-                value={instruction}
-                onChange={(e) => setInstruction(e.target.value)}
-              />
-              <button type="button" onClick={handleAddInstruction}>
-                Add Instruction
+                <div className="difficultyLevelForm">
+                  <label className="formTitle">Difficulty Level:</label>
+                  <select
+                    value={difficultyLevel}
+                    onChange={(e) => setDifficultyLevel(e.target.value)}
+                  >
+                    <option value="easy">Easy</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="hard">Hard</option>
+                    <option value="advanced">Advanced</option>
+                  </select>
+                  {errors.difficultyLevel && (
+                    <p className="error">{errors.difficultyLevel}</p>
+                  )}
+                </div>
+
+                <div className="imageURLForm">
+                  <label className="formTitle">Image URL:</label>
+                  <input
+                    type="text"
+                    value={imageURL}
+                    onChange={(e) => setImageURL(e.target.value)}
+                  />
+                  {errors.imageURL && (
+                    <p className="error">{errors.imageURL}</p>
+                  )}
+                </div>
+
+                <div className="cookingTimeForm">
+                  <label className="formTitle">Cooking Time:</label>
+                  <input
+                    type="text"
+                    value={cookingTime}
+                    onChange={(e) => setCookingTime(e.target.value)}
+                  />
+                  <span> E.G: 10 min </span>
+                  {errors.cookingTime && (
+                    <p className="error">{errors.cookingTime}</p>
+                  )}
+                </div>
+
+                <div className="categoryForm">
+                  <label className="formTitle">Category:</label>
+                  <select
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                  >
+                    <option value="Select a category" disabled>
+                      Select a category
+                    </option>
+                    <option value="Italian">Italian</option>
+                    <option value="Filipino">Filipino</option>
+                    <option value="French">French</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Indian">Indian</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Thai">Thai</option>
+                    <option value="Greek">Greek</option>
+                    <option value="Turkish">Turkish</option>
+                    <option value="Brazilian">Brazilian</option>
+                    <option value="Moroccan">Moroccan</option>
+                    <option value="Korean">Korean</option>
+                    <option value="Vietnamese">Vietnamese</option>
+                    <option value="Mediterranean">Mediterranean</option>
+                    <option value="American">American</option>
+                    <option value="Peruvian">Peruvian</option>
+                    <option value="Argentinian">Argentinian</option>
+                    <option value="Caribbean">Caribbean</option>
+                    <option value="Middle Eastern">Middle Eastern</option>
+                    <option value="African">African</option>
+                    <option value="Russian">Russian</option>
+                    <option value="Swiss">Swiss</option>
+                    <option value="British">British</option>
+                    <option value="Irish">Irish</option>
+                    <option value="Scandinavian">Scandinavian</option>
+                    <option value="Portuguese">Portuguese</option>
+                    <option value="German">German</option>
+                    <option value="Dutch">Dutch</option>
+                    <option value="Fusion"> Fusion </option>
+                  </select>
+                  {errors.category && (
+                    <p className="error">{errors.category}</p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="formRightSide">
+              <div className="ingredientsForm">
+                <label className="formTitle">Ingredients:</label>
+                <div>
+                  <input
+                    type="text"
+                    value={ingredient}
+                    onChange={(e) => setIngredient(e.target.value)}
+                  />
+                  <button
+                    className="formBtn"
+                    type="button"
+                    onClick={handleAddIngredient}
+                  >
+                    Add Ingredient
+                  </button>
+                </div>
+                {errors.ingredients && (
+                  <p className="error">{errors.ingredients}</p>
+                )}
+                <ul>
+                  {ingredients.map((item, index) => (
+                    <li key={index}>
+                      {item}
+                      <button
+                        className="deleteBtn"
+                        type="button"
+                        onClick={() => handleDeleteIngredient(index)}
+                      >
+                        <img src="images/delete.png" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="instructionsForm">
+                <label className="formTitle">Instructions:</label>
+                <div>
+                  <input
+                    type="text"
+                    value={instruction}
+                    onChange={(e) => setInstruction(e.target.value)}
+                  />
+                  <button
+                    className="formBtn"
+                    type="button"
+                    onClick={handleAddInstruction}
+                  >
+                    Add Instruction
+                  </button>
+                </div>
+                {errors.instructions && (
+                  <p className="error">{errors.instructions}</p>
+                )}
+                <ul>
+                  {instructions.map((item, index) => (
+                    <li key={index}>
+                      {item}
+                      <button
+                        className="deleteBtn"
+                        type="button"
+                        onClick={() => handleDeleteInstruction(index)}
+                      >
+                        <img src="images/delete.png" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <button
+                className="createBtn"
+                type="button"
+                onClick={handleCreateRecipe}
+              >
+                Create Recipe
               </button>
             </div>
-            {errors.instructions && (
-              <p className="error">{errors.instructions}</p>
-            )}
-            <ul>
-              {instructions.map((item, index) => (
-                <li key={index}>
-                  {item}
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteInstruction(index)}
-                  >
-                    Delete
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="difficultyLevelForm">
-            <label>Difficulty Level:</label>
-            <select
-              value={difficultyLevel}
-              onChange={(e) => setDifficultyLevel(e.target.value)}
-            >
-              <option value="easy">Easy</option>
-              <option value="moderate">Moderate</option>
-              <option value="hard">Hard</option>
-              <option value="advanced">Advanced</option>
-            </select>
-            {errors.difficultyLevel && (
-              <p className="error">{errors.difficultyLevel}</p>
-            )}
-          </div>
-
-          <div className="imageURLForm">
-            <label>Image URL:</label>
-            <input
-              type="text"
-              value={imageURL}
-              onChange={(e) => setImageURL(e.target.value)}
-            />
-            {errors.imageURL && <p className="error">{errors.imageURL}</p>}
-          </div>
-
-          <div className="cookingTimeForm">
-            <label>Cooking Time:</label>
-            <input
-              type="text"
-              value={cookingTime}
-              onChange={(e) => setCookingTime(e.target.value)}
-            />
-            <span> E.G: 10 min </span>
-            {errors.cookingTime && (
-              <p className="error">{errors.cookingTime}</p>
-            )}
-          </div>
-
-          <div className="categoryForm">
-            <label>Category:</label>
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="Select a category" disabled>
-                Select a category
-              </option>
-              <option value="Italian">Italian</option>
-              <option value="Filipino">Filipino</option>
-              <option value="French">French</option>
-              <option value="Mexican">Mexican</option>
-              <option value="Chinese">Chinese</option>
-              <option value="Indian">Indian</option>
-              <option value="Japanese">Japanese</option>
-              <option value="Spanish">Spanish</option>
-              <option value="Thai">Thai</option>
-              <option value="Greek">Greek</option>
-              <option value="Turkish">Turkish</option>
-              <option value="Brazilian">Brazilian</option>
-              <option value="Moroccan">Moroccan</option>
-              <option value="Korean">Korean</option>
-              <option value="Vietnamese">Vietnamese</option>
-              <option value="Mediterranean">Mediterranean</option>
-              <option value="American">American</option>
-              <option value="Peruvian">Peruvian</option>
-              <option value="Argentinian">Argentinian</option>
-              <option value="Caribbean">Caribbean</option>
-              <option value="Middle Eastern">Middle Eastern</option>
-              <option value="African">African</option>
-              <option value="Russian">Russian</option>
-              <option value="Swiss">Swiss</option>
-              <option value="British">British</option>
-              <option value="Irish">Irish</option>
-              <option value="Scandinavian">Scandinavian</option>
-              <option value="Portuguese">Portuguese</option>
-              <option value="German">German</option>
-              <option value="Dutch">Dutch</option>
-              <option value="Fusion"> Fusion </option>
-            </select>
-            {errors.category && <p className="error">{errors.category}</p>}
-          </div>
-
-          <button type="button" onClick={handleCreateRecipe}>
-            Create Recipe
-          </button>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );
