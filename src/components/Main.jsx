@@ -8,6 +8,7 @@ import AllRecipes from "./AllRecipes/AllRecipes";
 import RecipeDetails from "./RecipeDetails/RecipeDetails";
 import CreateRecipe from "./CreateRecipe/CreateRecipe";
 import MyRecipes from "./MyRecipes/MyRecipes";
+import Valentines from "./Valentines/Valentines";
 
 const Main = () => {
   return (
@@ -21,6 +22,9 @@ const Main = () => {
         <Route path="/recipe/:id" element={<RecipeDetails />} />
         <Route path="/create-recipe" element={<CreateRecipe />} />
         <Route path="/my-recipes" element={<MyRecipes />} />
+        <Route path="/valentines" element={<Valentines />} />
+
+        
 
       </Routes>
     </div>

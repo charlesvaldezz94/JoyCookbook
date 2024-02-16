@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db, useAuth } from "../../firebase/firebase";
 import { Link } from "react-router-dom";
@@ -9,23 +9,23 @@ const Home = () => {
   const { currentUser: authUser } = useAuth();
   const isAuthenticated = authUser !== null;
 
+  const joy = useMemo(() => {
+    if (!authUser) return false;
+    const userName = authUser.email.split('@')[0].toLowerCase();
+    return userName === "joylovescharles";
+  }, [authUser]);
+
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
         const recipesCollection = collection(db, "recipes");
         const recipesSnapshot = await getDocs(recipesCollection);
-
-        const recipesData = recipesSnapshot.docs.map((doc) => ({
+        const recipesData = recipesSnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data(),
         }));
-
-        // Sort recipes by likes in descending order
         const sortedRecipes = recipesData.sort((a, b) => b.likes - a.likes);
-
-        // Take the top 3 recipes
         const top3Recipes = sortedRecipes.slice(0, 3);
-
         setRecipes(top3Recipes);
       } catch (error) {
         console.error("Error fetching recipes", error);
@@ -36,15 +36,11 @@ const Home = () => {
   }, []);
 
   const getDisplayName = (recipe) => {
-    // Extract the author's email from the recipe
     const authorEmail = recipe.author || "";
-
-    // If email exists, extract the display name
     const displayName = authorEmail ? authorEmail.split("@")[0] : "Unknown";
-
-    // Capitalize the first letter of the display name
     return displayName.charAt(0).toUpperCase() + displayName.slice(1);
   };
+  
 
   return (
     <div id="homeContainer">
@@ -97,7 +93,7 @@ const Home = () => {
 
       <div className="homeBottomContainer">
         <div className="homeBottomTitle">
-          <h2> Check out your recipes here!</h2>{" "}
+          <h2> Check out your recipes here!</h2>
         </div>
         <div className="homeBottomLink">
           {isAuthenticated ? (
@@ -111,6 +107,22 @@ const Home = () => {
           )}
         </div>
       </div>
+
+      {joy && (
+      <div className="valentinesContainer">
+        <div className="valHeader"> 
+          <h2> Hi JoylovesCharles! Click the button for a special surprise!</h2>
+        </div>
+        <div className="homeBottomLink">
+          <Link to="/valentines">
+            <button className="btn"> Here </button>
+          </Link>
+          </div>
+
+      </div>
+    )}
+
+
     </div>
   );
 };

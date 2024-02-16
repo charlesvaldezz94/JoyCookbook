@@ -133,8 +133,30 @@
   width: 90vw;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20vh;
+  margin-bottom: 10vh;
   
+}
+
+.valentinesContainer {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+    url(https://static.vecteezy.com/system/resources/previews/004/876/804/original/valentine-hearts-background-free-vector.jpg);
+  background-size: 90vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 45vh;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20vh;
+}
+
+.valHeader {
+  text-align: center;
+  color: white;
+  padding-top: 8vh;
+  font-size: 32px;
 }
 
 .homeBottomLink {
